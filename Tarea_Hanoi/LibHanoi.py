@@ -1,4 +1,4 @@
-# LibHanoi.py — Versión Recursiva
+# Lib.py
 
 def inicializar_torres():
     # Inicializa las torres
@@ -6,6 +6,7 @@ def inicializar_torres():
 
 
 def mostrar_torres(torres):
+    # Muestra el estado actual
     print(f"Torre 1: {torres[0]}")
     print(f"Torre 2: {torres[1]}")
     print(f"Torre 3: {torres[2]}")
@@ -13,41 +14,34 @@ def mostrar_torres(torres):
 
 
 def mover_pieza(torres, origen, destino):
-    # Verifica que haya piezas
+    # Mueve una pieza validando reglas
     if not torres[origen]:
-        return False
-    # No permite mover disco grande sobre uno más pequeño
+        return False  # no hay nada que mover
     if torres[destino] and torres[destino][-1] < torres[origen][-1]:
-        return False
+        return False  # no se puede poner grande sobre pequeño
     
     pieza = torres[origen].pop()
     torres[destino].append(pieza)
-    print(f"Moviendo pieza {pieza} de Torre {origen + 1} a Torre {destino + 1}")
+    print(f"Moviendo pieza {pieza} de Torre {origen+1} a Torre {destino+1}")
     mostrar_torres(torres)
     return True
 
 
-def resolver_hanoi(torres, n, origen, auxiliar, destino):
-    # Caso base: cuando todas las piezas están en la torre destino
-    if torres[2] == [5, 4, 3, 2, 1]:
-        print("Caso base alcanzado. ¡Torres completadas!")
-        return
-
-    if n == 1:
-        mover_pieza(torres, origen, destino)
-    else:
-        # Mueve n-1 discos a la torre auxiliar
-        resolver_hanoi(torres, n-1, origen, destino, auxiliar)
-        # Mueve el disco más grande al destino
-        mover_pieza(torres, origen, destino)
-        # Mueve los n-1 discos desde auxiliar a destino
-        resolver_hanoi(torres, n-1, auxiliar, origen, destino)
-
-
 def resolver_hanoi_simple(torres):
-    print("Estado inicial:")
-    mostrar_torres(torres)
-    n = len(torres[0])
-    resolver_hanoi(torres, n, 0, 1, 2)
-    print("¡Proceso finalizado! Estado final:")
-    mostrar_torres(torres)
+    # Resuelve Hanoi iterativamente
+    objetivo = [5, 4, 3, 2, 1]
+    movimientos = 0
+    
+    while torres[2] != objetivo:
+        if mover_pieza(torres, 0, 1) or mover_pieza(torres, 1, 0):
+            movimientos += 1
+        if torres[2] == objetivo: break
+
+        if mover_pieza(torres, 0, 2) or mover_pieza(torres, 2, 0):
+            movimientos += 1
+        if torres[2] == objetivo: break
+
+        if mover_pieza(torres, 1, 2) or mover_pieza(torres, 2, 1):
+            movimientos += 1
+    
+    print(f"Total de movimientos realizados: {movimientos}")
