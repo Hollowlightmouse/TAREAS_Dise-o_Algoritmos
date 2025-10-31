@@ -11,7 +11,9 @@ Desarrollar un sistema que consuma la API de PokeAPI para construir y analizar g
 ### Estructura de Archivos
 ```
 proyecto/
-├── pokelib.py      # Librería de funciones (lógica y API)
+├──binary_search.py 
+├──graph_builder.py
+├──pokeapi_client
 ├── main.py         # Interfaz principal del usuario
 └── DESARROLLO.md   # Este archivo de documentación
 ```
