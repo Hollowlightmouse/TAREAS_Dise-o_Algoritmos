@@ -6,25 +6,6 @@ Desarrollar un sistema modular en Python que calcule rutas detalladas entre ciud
 
 ---
 
-## Arquitectura del Proyecto
-
-### Estructura de Archivos
-
-proyecto_rutas/
-├── main.py # Interfaz principal del usuario
-│
-├── models/
-│ ├── init.py
-│ ├── node.py # Clase Node: representa una ciudad o punto del grafo
-│ ├── edge.py # Clase Edge: representa una conexión (arista) entre ciudades
-│ └── graph.py # Clase Graph: gestiona los nodos, aristas y búsqueda de rutas
-│
-└── services/
-├── init.py
-└── google_maps_client.py # Clase GoogleMapsClient: maneja peticiones a la API de Google Maps
-
-
----
 
 ## Requisitos del Proyecto
 
