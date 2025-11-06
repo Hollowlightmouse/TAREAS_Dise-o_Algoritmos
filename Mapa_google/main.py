@@ -22,7 +22,7 @@ def main():
     clear_screen()
     header()
 
-    API_KEY = "Digite su Api google cloud aqui para el uso del programa"   
+    API_KEY = "Digite su Api google cloud aqui"   
     maps_client = GoogleMapsClient(API_KEY)
 
     # Entrada de datos
